@@ -16,20 +16,20 @@ public class KnapsackSolver{
         this.limit = limit;
         this.n = n;
         totalValue = 0;
-        totalWeight = 0;
-
-
+        totalWeight = 0;    
     }
 
-    public void dynamicSolver(){
+    public void dynamicSolver(int n){
         // n is the size of values[]
         //using dynamic programming solve the knapsack problem
-
-        output();
+        n = 4;
+        System.out.println(n);//obviously prints out 4, but since n is being passed by value
+        // after this function is finished, n will no longer be 4
+        //output();
     }
 
     public void dynamicFractionalSolver(){
-
+        System.out.println(n); // prints out 0
     }
 
     public void greedySolver(){
@@ -39,9 +39,7 @@ public class KnapsackSolver{
     public void greedyFractionalSolver(){
 
     } 
-
-
-
+    
     private void output(){
         System.out.println("Total value: " + totalValue);
         System.out.println("Total weight: " + totalWeight);

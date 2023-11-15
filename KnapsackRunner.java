@@ -4,15 +4,18 @@ public class KnapsackRunner{
 
     static int[] values;
     static int[] weights;
+    static int[][] packedItems;
     static int limit;
     static int n;
 
     public static void main(String[] args){
         File input = new File("input.txt");
-        KnapsackSolver solver = new KnapsackSolver(values, weights, limit, n);
         try{
             Scanner sc = new Scanner(input);
-            readInputFile(sc, solver);
+            readInputFile(sc); 
+            KnapsackSolver solver = new KnapsackSolver(values, weights, limit, n);
+            solver.dynamicSolver(n);
+            solver.dynamicFractionalSolver();
             solver.dynamicSolver(n);
             sc.close();
         } catch(Exception e){
@@ -21,9 +24,8 @@ public class KnapsackRunner{
         }
     }
 
-    private static void readInputFile(Scanner sc, KnapsackSolver solver){
+    private static void readInputFile(Scanner sc){
         String[] input = sc.nextLine().split(", ");
-
         //read values from input file
         values = new int[input.length];
         for(int i = 0; i < values.length;i++){
@@ -39,5 +41,8 @@ public class KnapsackRunner{
 
         limit = sc.nextInt(); //get the maximum capacity of the knapsack
         n = values.length; //the amount of values is needed for recursion
+
+        //todo 
+        //fill packedItems with -1's
     }
 }
