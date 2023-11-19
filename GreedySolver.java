@@ -18,8 +18,7 @@ public class GreedySolver{
     //global variables
     static ArrayList<Item> itemList = new ArrayList<Item>();
     static int capacity;
-    static int n;
-    static int profit;
+    static int profit; //total value of items that are put into the knapsack
 
     public static void solve(){
         //sort itemList in ascending order by value/weight ratio 
@@ -44,7 +43,7 @@ public class GreedySolver{
             Scanner sc = new Scanner(input);
             readInputFile(sc); 
             solve();
-            System.out.println(profit);
+            System.out.println("Total Value: " + profit);
             sc.close();
         } catch(Exception e){
             System.out.println(e);
@@ -54,16 +53,14 @@ public class GreedySolver{
 
     private static void readInputFile(Scanner sc){
         String[] values = sc.nextLine().split(", ");
-        //read values from input file
         String[] weights  = sc.nextLine().split(", ");
-        
+    
         for(int i = 0; i < values.length; i++){
+            //create then add item to itemList
             itemList.add(new Item(Integer.parseInt(values[i]), Integer.parseInt(weights[i])));
         }
 
         capacity = sc.nextInt(); //get the maximum capacity of the knapsack
-        n = values.length; //the amount of values is needed for recursion
-
     }
 
     public static void quickSort(ArrayList<Item> itList, int p, int r){
