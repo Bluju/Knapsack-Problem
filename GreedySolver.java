@@ -25,7 +25,7 @@ public class GreedySolver{
         quickSort(itemList, 0, itemList.size());
 
         //starting from the item with the greatest value/weight ratio
-        for(int i = itemList.size() - 1; i > 0; i--){
+        for(int i = itemList.size() - 1; i >= 0; i--){
             //check if weight <= capacity
             if(itemList.get(i).weight <= capacity){
                 capacity -= itemList.get(i).weight;
